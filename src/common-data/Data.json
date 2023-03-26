@@ -1,0 +1,98 @@
+[
+    {
+        "name" : "Cheese Margherita Pizza",
+        "img" : "https://images.pexels.com/photos/2762942/pexels-photo-2762942.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "250",
+        "description" : "A pizza with tomato sauce, double cheese, and basil"
+    },
+    {
+        "name" : "Peppy Paneer Pizza",
+        "img" : "https://images.pexels.com/photos/2233348/pexels-photo-2233348.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "280",
+        "description" : "A pizza with tomato sauce, cheese, paneer, and jalapeno"
+    },
+    {
+        "name" : "Mexican Green Wave Pizza",
+        "img" : "https://images.pexels.com/photos/1527602/pexels-photo-1527602.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "240",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, jalapeno, and olives"
+    },
+    {
+        "name" : "Deluxe Veggie Pizza",
+        "img" : "https://images.pexels.com/photos/5792322/pexels-photo-5792322.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "220",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : "Veg Extravaganza Pizza",
+        "img" : "https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "180",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : "Cheese and Corn Pizza",
+        "img" : "https://images.pexels.com/photos/7362684/pexels-photo-7362684.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "250",
+        "description" : "A pizza with tomato sauce, cheese, and corn"
+    },
+    {
+        "name" : "Margherita Pizza",
+        "img" : "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "220",
+        "description" : "A pizza with tomato sauce, cheese, and basil"
+    },
+    {
+        "name" : "Veggie Paradise Pizza",
+        "img" : "https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "220",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : "Fresh Veggie Pizza",
+        "img" : "https://images.pexels.com/photos/14623895/pexels-photo-14623895.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "180",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : "Paneer Makhani Pizza",
+        "img" : "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "200",
+        "description" : "A pizza with tomato sauce, cheese, and basil"
+    },
+    {
+        "name" : "Indi Tandoori Paneer Pizza",
+        "img" : "https://images.pexels.com/photos/4109111/pexels-photo-4109111.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "240",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : "Chicken Delight Pizza",
+        "img" : "https://images.pexels.com/photos/5908226/pexels-photo-5908226.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "280",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : "Chicken Sausage Pizza",
+        "img" : "https://images.pexels.com/photos/1552635/pexels-photo-1552635.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "300",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : "Chicken Fiesta Pizza",
+        "img" : "https://images.pexels.com/photos/4394617/pexels-photo-4394617.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "380",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : " Chicken Tikka Pizza",
+        "img" : "https://images.pexels.com/photos/5017806/pexels-photo-5017806.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "350",
+        "description" : "A pizza with tomato sauce, cheese, onion, capsicum, and olives"
+    },
+    {
+        "name" : "Margherita Pizza",
+        "img" : "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "price" : "220",
+        "description" : "A pizza with tomato sauce, cheese, and basil"
+    }
+]
