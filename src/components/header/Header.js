@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { FaPizzaSlice } from 'react-icons/fa';
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Logout'];
 
 function Header() {
 
@@ -27,7 +27,7 @@ function Header() {
     };
 
     return (
-        <AppBar position="static" className='header' style={{backgroundColor:'black'}}>
+        <AppBar position="fixed" className='header' style={{backgroundColor:'black'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <FaPizzaSlice style={{marginRight:'8px'}}/>
