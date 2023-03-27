@@ -38,7 +38,7 @@ function Header() {
             if (k === 'login') {
                 navigate('/login')
             } else if (k === 'register') {
-                navigate('/register')
+                navigate('/create-account')
             } else if (k === 'logout') {
                 localStorage.removeItem('id')
                 window.location = '/'
