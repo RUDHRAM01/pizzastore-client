@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../header/Header'
 import Data from '../../common-data/Data.json'
 import PizzaCard from './card/Card'
 import { useState } from 'react'
+
+
 const LandingPage = () => {
     const [cart, setCart] = useState([]);
-    console.log(cart)
+
     return (
         <>
             <Header />

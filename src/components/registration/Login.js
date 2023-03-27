@@ -22,7 +22,7 @@ export default function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:8000/users/signin", config).then((data) => {
-      localStorage.setItem('id', data.data.id);
+      localStorage.setItem('id', data.data?.result?.id);
       console.log(data);
     }).catch((e) => {
       console.log(e)

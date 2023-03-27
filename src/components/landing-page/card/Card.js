@@ -7,21 +7,26 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import {useCallback } from 'react';
-
+import axios from 'axios'
 function PizzaCard({ cart , setCart, name, img, price, description }) {
-    const handleChange = useCallback((name, price, action) => {
+
+  const handleChange = useCallback(async (name, price, action) => {
+        const id = localStorage.getItem('id')
         const item = cart.find((item) => item.name === name);
         if (item) {
             if (action === 'add') {
                 item.quantity++;
-                item.total = item.quantity * item.price;
+              item.total = item.quantity * item.price;
+              await axios.post("http://localhost:8000/cart", { userId: id, data: cart })
             } else {
                 if (item.quantity > 1) {
                     item.quantity--;
-                    item.total = item.quantity * item.price;
+                  item.total = item.quantity * item.price;
+                  await axios.post("http://localhost:8000/cart", { userId: id, data: cart })
                 } else {
                     const newCart = cart.filter((item) => item.name !== name);
-                    setCart(newCart);
+                  setCart(newCart);
+                  await axios.post("http://localhost:8000/cart", { userId: id, data: newCart })
                 }
             }
         } else {
@@ -29,6 +34,7 @@ function PizzaCard({ cart , setCart, name, img, price, description }) {
                 ...prev,
                 {name,price,quantity: 1,total: price,},
             ]);
+            await axios.post("http://localhost:8000/cart", { userId: id, data: cart })
         }
   }, [cart, setCart]);
 
