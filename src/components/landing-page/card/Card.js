@@ -11,10 +11,15 @@ import axios from 'axios'
 function PizzaCard({ cart , setCart, name, img, price, description }) {
 
   const handleChange = useCallback(async (name, price, action) => {
-        const id = localStorage.getItem('id')
-        const item = cart.find((item) => item.name === name);
+
+    const id = localStorage.getItem('id')
+    let copy = cart;
+    copy === null || copy === undefined ? copy = [] : copy = cart;
+    const item = copy.find((item) => item.name === name);
+    
         if (item) {
-            if (action === 'add') {
+          if (action === 'add') {
+              console.log('add')
                 item.quantity++;
               item.total = item.quantity * item.price;
               await axios.post("http://localhost:8000/cart", { userId: id, data: cart })
@@ -30,11 +35,21 @@ function PizzaCard({ cart , setCart, name, img, price, description }) {
                 }
             }
         } else {
-            setCart((prev) => [
-                ...prev,
-                {name,price,quantity: 1,total: price,},
+          let copy = cart;
+          copy === null || copy === undefined ? copy = [] : copy = cart;
+          if (copy === null || copy === undefined) {
+            setCart([
+              { name, price, quantity: 1, total: price },
             ]);
-            await axios.post("http://localhost:8000/cart", { userId: id, data: cart })
+          } else {
+            setCart((prev) => [
+              ...prev,
+              { name, price, quantity: 1, total: price },
+            ]);
+          }
+          copy.push({name,price,quantity: 1,total: price})
+          
+            await axios.post("http://localhost:8000/cart", { userId: id, data: copy })
         }
   }, [cart, setCart]);
 

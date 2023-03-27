@@ -3,11 +3,20 @@ import Header from '../header/Header'
 import Data from '../../common-data/Data.json'
 import PizzaCard from './card/Card'
 import { useState } from 'react'
-
+import axios from 'axios'
 
 const LandingPage = () => {
     const [cart, setCart] = useState([]);
-
+    useEffect(() => {
+        async function fetchData() {
+            const id = localStorage.getItem('id')
+            if(id === null || id === undefined) return;
+          axios.get(`http://localhost:8000/cart/${id}`).then((res) => {
+          setCart(res.data[0]?.data)
+        })
+        }
+        fetchData();
+      }, [])
     return (
         <>
             <Header />
