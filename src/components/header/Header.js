@@ -27,6 +27,7 @@ function Header() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+    
     const id = localStorage.getItem('id');
     let show = false;
     if (id === null || id === undefined) {

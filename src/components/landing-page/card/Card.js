@@ -8,8 +8,7 @@ import Typography from '@mui/material/Typography';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import {useCallback } from 'react';
 import axios from 'axios'
-function PizzaCard({ cart , setCart, name, img, price, description }) {
-
+function PizzaCard({ index, cart , setCart, name, img, price, description }) {
   const handleChange = useCallback(async (name, price, action) => {
 
     const id = localStorage.getItem('id')
@@ -77,7 +76,7 @@ function PizzaCard({ cart , setCart, name, img, price, description }) {
             +
           </Button>
           <AiOutlineShoppingCart />
-          <Button size="small" onClick={() => handleChange(name, price, 'subtract')}>
+          <Button size="small" onClick={() => handleChange(name, price, 'subtract')} >
             -
           </Button>
         </div>

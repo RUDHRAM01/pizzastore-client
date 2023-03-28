@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import Header from '../header/Header';
 
 const theme = createTheme();
 
@@ -34,7 +35,10 @@ export default function CreateAccount() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
+      <Header />
+      <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'90vh',width:'100%'}}>
+      <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -99,5 +103,7 @@ export default function CreateAccount() {
         </Box>
       </Container>
     </ThemeProvider>
+      </div>
+    </>
   );
 }

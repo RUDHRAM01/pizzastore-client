@@ -22,9 +22,8 @@ const LandingPage = () => {
             <Header />
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginTop: '10vh', width: '100%',flexDirection:''}}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '25px 200px', width: '80%'}}>
-                  
-                    {Data.map((item,index) => {
-                        return <PizzaCard cart={cart} setCart={setCart} name={item.name} img={item.img} price={item.price} description={item.description} />
+                    {Data.map((item, index) => {
+                        return <PizzaCard index={index} cart={cart} setCart={setCart} name={item.name} img={item.img} price={item.price} description={item.description} />
                     })
                     }
                 </div>
