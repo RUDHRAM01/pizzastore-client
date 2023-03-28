@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
+import Footer from "./pages/Footer";
 function App() {
-  return <Home />;
+  return <><Home /><Footer /></>;
 }
 
 export default App;

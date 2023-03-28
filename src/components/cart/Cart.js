@@ -26,7 +26,7 @@ const Cart = () => {
       })
     }
     fetchData();
-  },[])
+  },[token])
 
   const handle = async () => {
     const id = localStorage.getItem('id')

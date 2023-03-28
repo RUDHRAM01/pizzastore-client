@@ -24,7 +24,7 @@ const LandingPage = () => {
         })
         }
         fetchData();
-      }, [])
+      }, [token])
     return (
         <>
             <Header />

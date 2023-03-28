@@ -14,7 +14,7 @@ const Orders = () => {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
-                  }
+                }
             }).then((res) => {
                 setOrders(res.data);
             }).catch((e) => {
@@ -22,7 +22,7 @@ const Orders = () => {
             })
         }
         fetchData();
-    }, [])
+    }, [token])
 
     console.log(orders)
 
@@ -39,7 +39,7 @@ const Orders = () => {
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '25px 200px', width: '80%', padding: '20px' }}>
                     {orders === null || orders?.length === 0 || orders === undefined ? <><Typography variant="h4" style={{ color: 'white' }}>No item added</Typography></> :
                         orders?.map((items) => {
-                           return items?.name.map((item, index) => {
+                            return items?.name.map((item, index) => {
 
                                 return <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '300px', height: '300px', border: '1px solid white', borderRadius: '10px' }}>
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', height: '50%', color: 'white' }}>
