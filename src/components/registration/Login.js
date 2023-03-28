@@ -22,9 +22,15 @@ export default function SignIn() {
     password: ''
   });
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8000/users/signin", config).then((data) => {
+    axios.post("http://localhost:8000/users/signin", config, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }).then((data) => {
       localStorage.setItem('id', data.data?.result?.id);
       navigate("/");
       console.log(data);

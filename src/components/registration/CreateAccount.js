@@ -20,12 +20,17 @@ export default function CreateAccount() {
     email: '',
     password: ''
   });
-
+  const token = localStorage.getItem('token');
    const navigate  = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8000/users/register", config).then((data) => {
+    axios.post("http://localhost:8000/users/register", config, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }).then((data) => {
       localStorage.setItem('token', data.data.token);
       console.log(data);
       navigate('/login');

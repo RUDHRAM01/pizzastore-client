@@ -10,7 +10,7 @@ import {useCallback } from 'react';
 import axios from 'axios'
 function PizzaCard({ index, cart , setCart, name, img, price, description }) {
   const handleChange = useCallback(async (name, price, action) => {
-
+    const token = localStorage.getItem('token')
     const id = localStorage.getItem('id')
     let copy = cart;
     copy === null || copy === undefined ? copy = [] : copy = cart;
@@ -21,34 +21,54 @@ function PizzaCard({ index, cart , setCart, name, img, price, description }) {
               console.log('add')
                 item.quantity++;
               item.total = item.quantity * item.price;
-              await axios.post("http://localhost:8000/cart", { userId: id, data: cart })
+              await axios.post("http://localhost:8000/cart", { userId: id, data: cart }, {
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json'
+                }
+              })
             } else {
                 if (item.quantity > 1) {
                     item.quantity--;
                   item.total = item.quantity * item.price;
-                  await axios.post("http://localhost:8000/cart", { userId: id, data: cart })
+                  await axios.post("http://localhost:8000/cart", { userId: id, data: cart }, {
+                    headers: {
+                      'Authorization': `Bearer ${token}`,
+                      'Content-Type': 'application/json'
+                    }
+                  })
                 } else {
                     const newCart = cart.filter((item) => item.name !== name);
                   setCart(newCart);
-                  await axios.post("http://localhost:8000/cart", { userId: id, data: newCart })
+                  await axios.post("http://localhost:8000/cart", { userId: id, data: newCart }, {
+                    headers: {
+                      'Authorization': `Bearer ${token}`,
+                      'Content-Type': 'application/json'
+                    }
+                  })
                 }
             }
         } else {
           let copy = cart;
-          copy === null || copy === undefined ? copy = [] : copy = cart;
           if (copy === null || copy === undefined) {
-            setCart([
-              { name, price, quantity: 1, total: price },
-            ]);
+          setCart([
+            { name, price, quantity: 1, total: price },
+          ])
           } else {
             setCart((prev) => [
               ...prev,
               { name, price, quantity: 1, total: price },
             ]);
           }
+          copy === null || copy === undefined ? copy = [] : copy = cart;
           copy.push({name,price,quantity: 1,total: price})
           
-            await axios.post("http://localhost:8000/cart", { userId: id, data: copy })
+            await axios.post("http://localhost:8000/cart", { userId: id, data: copy }, {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              }
+            })
         }
   }, [cart, setCart]);
 

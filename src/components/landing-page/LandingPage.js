@@ -7,11 +7,19 @@ import axios from 'axios'
 
 const LandingPage = () => {
     const [cart, setCart] = useState([]);
+    const token = localStorage.getItem('token')
     useEffect(() => {
         async function fetchData() {
             const id = localStorage.getItem('id')
             if(id === null || id === undefined) return;
-          axios.get(`http://localhost:8000/cart/${id}`).then((res) => {
+            axios.get(`http://localhost:8000/cart/${id}`,
+            {
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json'
+                }
+              }
+            ).then((res) => {
           setCart(res.data[0]?.data)
         })
         }

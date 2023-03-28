@@ -11,12 +11,16 @@ const Cart = () => {
   const navigate = useNavigate()
   const [message, setMessage] = useState('order placed')
   const [open, setOpen] = useState(false);
-
+  const token = localStorage.getItem('token')
   useEffect(() => {
     async function fetchData() {
       const id = localStorage.getItem('id')
       if (id === null || id === undefined) return;
-      axios.get(`http://localhost:8000/cart/${id}`).then((res) => {
+      axios.get(`http://localhost:8000/cart/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        } }).then((res) => {
         let data = res?.data[0]?.data
         data === null ? console.log("") : setCart(data)
       })
@@ -35,7 +39,12 @@ const Cart = () => {
       }, 2000);
       return;
     }
-    await axios.post(`http://localhost:8000/order`,{id,cart}).then((res) => {
+    await axios.post(`http://localhost:8000/order`, { id, cart }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    },).then((res) => {
       console.log(res)
     }).catch((e) => {
       console.log(e)
@@ -46,7 +55,14 @@ const Cart = () => {
       setOpen(false);
     }, 2000);
     setCart([])
-    await axios.post("http://localhost:8000/cart", { userId: id, data: [] });
+    await axios.post("http://localhost:8000/cart", { userId: id, data: [] },
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    );
     navigate("/")
   }
 
