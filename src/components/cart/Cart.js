@@ -1,11 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { FaPizzaSlice } from 'react-icons/fa';
 import Header from '../header/Header'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
-import { Snackbar } from '@mui/material'
+import { Box, Container, Grid } from '@mui/material'
+import './Cart.scss'
 const Cart = () => {
   const [cart, setCart] = useState([])
   const navigate = useNavigate()
@@ -20,13 +22,14 @@ const Cart = () => {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
-        } }).then((res) => {
+        }
+      }).then((res) => {
         let data = res?.data[0]?.data
         data === null ? console.log("") : setCart(data)
       })
     }
     fetchData();
-  },[token])
+  }, [token])
 
   const handle = async () => {
     const id = localStorage.getItem('id')
@@ -56,46 +59,53 @@ const Cart = () => {
     }, 2000);
     setCart([])
     await axios.post("http://localhost:8000/cart", { userId: id, data: [] },
-    {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
       }
-    }
     );
     navigate("/")
   }
-
+  let total = 0;
   return (
     <>
       <Header />
-      <div style={{ display: 'flex', alignItems: 'center', backgroundColor: 'black', position: 'fixed' }}>
-
-        <Button variant="contained" onClick={handle}>
-          Place Order
-        </Button>
-      </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginTop: '8vh', width: '100%', flexDirection: '', backgroundColor: 'black', minHeight: '92vh', height: 'auto' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '25px 200px', width: '80%', padding: '20px' }}>
-          {cart === null || cart?.length === 0 || cart === undefined ? <><Typography variant="h4" style={{ color: 'white' }}>No item added</Typography></> :
-            cart?.map((item, index) => {
-              return <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '300px', height: '300px', border: '1px solid white', borderRadius: '10px' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', height: '50%', color: 'white' }}>
-                  <h3 style={{ color: 'white' }}>{item?.name}</h3>
-                  <h4 style={{ color: 'white' }}>{item?.price}</h4>
-                  <h4 style={{ color: 'white' }}>{item?.quantity}</h4>
-                </div>
-              </div>
-            })
-          }
+      <Container maxWidth="md" style={{ marginTop: "10vh" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Typography variant="h5" >CheckOut</Typography>
+          <span class="material-icons">
+            navigate_next
+          </span>
         </div>
-
-      </div>
-      <Snackbar
-        open={open}
-        message={`${message}`}
-      />
-
+        <div style={{ display: "flex", width: "100%" }}>
+          <Grid container>
+            <Grid item xs={2} md={2}><Typography variant='subtitle1' style={{ color: 'white', backgroundColor:"black" }}>No.</Typography></Grid>
+            <Grid item xs={4} md={4}><Typography variant='subtitle1' style={{ color: 'white', backgroundColor:"black" }}>Name</Typography></Grid>
+            <Grid item xs={2} md={2}><Typography variant='subtitle1' style={{ color: 'white', backgroundColor:"black" }}>Price</Typography></Grid>
+            <Grid item xs={2} md={2}><Typography variant='subtitle1' style={{ color: 'white', backgroundColor:"black" }}>Quantity</Typography></Grid>
+            <Grid item xs={2} md={2}><Typography variant='subtitle1' style={{ color: 'white', backgroundColor:"black" }}>quantity * price</Typography></Grid>
+            {cart === null || cart?.length === 0 || cart === undefined ? <><Typography variant="h4" style={{ color: 'black' }}>No item added</Typography></> :
+              cart?.map((item, index) => {
+                total = total + (item?.quantity * item?.price);
+                return <>
+                  <Grid item xs={2} md={2}><Typography variant='subtitle1' style={{ color: 'black' }}>{index + 1}</Typography></Grid>
+                  <Grid item xs={4} md={4}><Typography variant='subtitle1' style={{ color: 'black' }}>{item?.name}</Typography></Grid>
+                  <Grid item xs={2} md={2}><Typography variant='subtitle1' style={{ color: 'black' }}>{item?.price} rs</Typography></Grid>
+                  <Grid item xs={2} md={2}><Typography variant='subtitle1' style={{ color: 'black' }}>{item?.quantity}</Typography></Grid>
+                  <Grid item xs={2} md={2}><Typography variant='subtitle1' style={{ color: 'black' }}>{item?.quantity * item?.price} rs</Typography></Grid>
+                </>
+              })
+            }
+          </Grid>
+          
+        </div>
+        <Grid container spacing={0} >
+          <Grid item xs={2}><Typography style={{color:"white",backgroundColor:"black"}} variant="h6">Total: </Typography></Grid>
+          <Grid item xs={10}><Typography style={{color:"white",backgroundColor:"black"}}variant="h6">{total} rs</Typography></Grid>
+          </Grid>
+      </Container>
     </>
   )
 }
